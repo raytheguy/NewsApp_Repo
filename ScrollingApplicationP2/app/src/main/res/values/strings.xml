@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">ScrollingApplication</string>
+    <string name="savebutton" />
+    <string name="saveArticle">Save Article</string>
+    <string name="title_activity_detail">DetailActivity</string>
+    <string name="expand">Expand</string>
+    <string name="textview">TextView</string>
+    <string name="NYTimes">\u0020By NY Times</string>
+    <string-array name="newsArray">
+        <item>World News</item>
+        <item>Technology</item>
+        <item>Lifestyle</item>
+        <item>Entertainment</item>
+        <item>Finance</item>
+    </string-array>
+</resources>

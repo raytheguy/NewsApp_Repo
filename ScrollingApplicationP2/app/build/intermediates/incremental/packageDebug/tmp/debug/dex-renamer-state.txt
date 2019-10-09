@@ -1,7 +1,7 @@
-#Wed Oct 09 18:09:55 AEDT 2019
-base.0=C\:\\Users\\Raymond\\Documents\\GitHub\\INFS3634_HW1\\ScrollingApplicationP2\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes.dex
+#Wed Oct 09 21:03:30 AEDT 2019
+base.0=C\:\\Users\\Raymond\\Documents\\GitHub\\NewsApp_Repo\\ScrollingApplicationP2\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\out\\classes.dex
 path.1=classes.dex
 renamed.1=classes2.dex
 path.0=classes.dex
 renamed.0=classes.dex
-base.1=C\:\\Users\\Raymond\\Documents\\GitHub\\INFS3634_HW1\\ScrollingApplicationP2\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out\\classes.dex
+base.1=C\:\\Users\\Raymond\\Documents\\GitHub\\NewsApp_Repo\\ScrollingApplicationP2\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\out\\classes.dex

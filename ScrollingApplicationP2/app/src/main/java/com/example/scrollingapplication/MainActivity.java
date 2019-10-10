@@ -20,7 +20,6 @@ public class MainActivity extends AppCompatActivity {
 
     //others from Adapter
     public ArrayList<Integer> imageIds = new ArrayList<>();
-    public ArrayList<Integer> articleIds = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,20 +39,9 @@ public class MainActivity extends AppCompatActivity {
         //apply adapter to spinner
         topSpin.setAdapter(adapter);
 
-        initArticleIds();
         initImageIds();
         initRecyclerViewer();
 
-    }
-
-    //method is to obtain the articleIds and place them into an arrayList
-    public void initArticleIds() {
-        articleIds.add(FakeDatabase.getArticleById(1).getArticleID());
-        articleIds.add(FakeDatabase.getArticleById(2).getArticleID());
-        articleIds.add(FakeDatabase.getArticleById(3).getArticleID());
-        articleIds.add(FakeDatabase.getArticleById(4).getArticleID());
-        articleIds.add(FakeDatabase.getArticleById(5).getArticleID());
-        articleIds.add(FakeDatabase.getArticleById(6).getArticleID());
     }
 
     //method is to obtain the imageIds and place them into an arrayList
@@ -70,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
     public void initRecyclerViewer(){
         RecyclerView recyclerView = findViewById(R.id.recyclerv_view);
         //the arrayLists to put inside the RecycleView Adapter
-        RecyclerViewAdapter adapter = new RecyclerViewAdapter(imageIds, articleIds, this);
+        RecyclerViewAdapter adapter = new RecyclerViewAdapter(imageIds,this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

@@ -1,5 +1,7 @@
 package com.example.scrollingapplication;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
@@ -12,6 +14,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.snackbar.Snackbar;
@@ -24,12 +27,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private static final String TAG = "RecyclerViewAdapter";
     //ArrayList of Strings to Hold Imageids
     public ArrayList<Integer> imageIds = new ArrayList<>();
-    public ArrayList<Integer> articleIds = new ArrayList<>();
     public Context mContext;
 
-    public RecyclerViewAdapter(ArrayList<Integer> imageIds, ArrayList<Integer> articleIds, Context mContext) {
+    public RecyclerViewAdapter(ArrayList<Integer> imageIds, Context mContext) {
         this.imageIds = imageIds;
-        this.articleIds = articleIds;
         this.mContext = mContext;
     }
 
@@ -51,7 +52,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         //set the headline and image
         //add 1 to position as article ids start from 1
-        holder.textView.setText(FakeDatabase.getArticleById(position+1).getHeadline());
+        holder.textView.setText(FakeDatabase.getAllArticles().get(position).getHeadline());
         holder.imageView.setImageResource(imageIds.get(position));
 
         //Ger resources which is 'by NY Times'
@@ -69,8 +70,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 //add one as the arrayLists start from '0' while the articles start from '1'
                 intentBtn.putExtra("ArticleToPass", position+1);
                 intentBtn.putExtra("ImageToPass", imageIds.get(position));
+                ActivityOptionsCompat options = ActivityOptionsCompat.
+                        makeSceneTransitionAnimation((Activity)myView.getContext(), (View)myView, "imageId");
 //                intentBtn.putExtra("ImageToPass", articleImgID);
-                mContext.startActivity(intentBtn);
+                mContext.startActivity(intentBtn, options.toBundle());
             }
         });
 
@@ -79,7 +82,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.shareBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View myView) {
-                Snackbar.make(myView, "Intent initiated and your article ID is " + position+1, Snackbar.LENGTH_LONG)
+                Snackbar.make(myView, "Intent initiated and your article ID is " + (position+1), Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
 
                 //intent for the button send thing
@@ -95,7 +98,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public int getItemCount() {
         //get the amount of article Ids that exists
-        return articleIds.size();
+        return imageIds.size();
     }
 
     //purpose: holds widgets in memory
